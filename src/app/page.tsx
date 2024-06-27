@@ -6,7 +6,7 @@ import { Draggable } from "@/components/Draggable";
 import { Droppable } from "@/components/Droppable";
 
 export default function App() {
-	const [items, setItems] = useState({
+	const [items, setItems]: any = useState({
 		A: [
 			{ id: "1", content: "Card 1" },
 			{ id: "2", content: "Card 2" },
@@ -15,17 +15,19 @@ export default function App() {
 		C: [{ id: "4", content: "Card 4" }],
 	});
 
-	const handleDragEnd = (event) => {
+	const handleDragEnd = (event: any) => {
 		const { active, over } = event;
 		if (active.id !== over.id) {
-			const sourceContainer = getContainerFromId(active.id);
+			const sourceContainer: any = getContainerFromId(active.id);
 			const targetContainer = over.id;
-			const item = items[sourceContainer].find((i) => i.id === active.id);
+			const item: any = items[sourceContainer].find(
+				(i: any) => i.id === active.id
+			);
 
 			if (item) {
-				setItems((prevItems) => {
+				setItems((prevItems: any) => {
 					const newSourceContainer = prevItems[sourceContainer].filter(
-						(i) => i.id !== active.id
+						(i: any) => i.id !== active.id
 					);
 					const newTargetContainer = [...prevItems[targetContainer], item];
 
@@ -39,9 +41,9 @@ export default function App() {
 		}
 	};
 
-	const getContainerFromId = (id) => {
+	const getContainerFromId = (id: any) => {
 		return Object.keys(items).find((key) =>
-			items[key].some((item) => item.id === id)
+			items[key].some((item: any) => item.id === id)
 		);
 	};
 
@@ -50,7 +52,7 @@ export default function App() {
 			<div style={{ display: "flex", gap: "10px" }}>
 				{Object.keys(items).map((containerId) => (
 					<Droppable key={containerId} id={containerId}>
-						{items[containerId].map((item) => (
+						{items[containerId].map((item: any) => (
 							<Draggable key={item.id} id={item.id}>
 								{item.content}
 							</Draggable>

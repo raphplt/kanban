@@ -3,7 +3,7 @@
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 
-export function Draggable({ id, children }) {
+export function Draggable({ id, children }: any) {
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id,
 	});

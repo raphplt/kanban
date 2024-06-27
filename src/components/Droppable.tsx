@@ -3,7 +3,7 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 
-export function Droppable({ id, children }) {
+export function Droppable({ id, children }: any) {
 	const { isOver, setNodeRef } = useDroppable({ id });
 	const style = {
 		border: "1px solid gray",
